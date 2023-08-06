@@ -32,11 +32,9 @@ public:
     }
 };
 
-
-
 class tiles{
 public:
-
+    
     bool isMine;
     bool rightClicked = false;
     bool notRightClicked = true;
@@ -59,7 +57,6 @@ public:
 
         this-> xPosition = x;
         this->yPosition = y;
-
     }
 
     void drawTile(sf::RenderWindow &window) {
@@ -78,7 +75,6 @@ public:
             sprite.setPosition(xPosition,yPosition);
             window.draw(sprite);
         }
-
     }
 
     void drawClickedTile(sf::RenderWindow &window){
@@ -107,7 +103,6 @@ public:
             window.draw(sprite);
 
     }
-
 
     void drawNear(sf::RenderWindow &window) {
         sf::Texture texture;
@@ -174,7 +169,7 @@ void drawRectangle(float x, float y,sf::RenderWindow &window ) {
 }
 
 void drawLeaders(int width, int height, int place, float x, float y, string name, string time, sf::RenderWindow &window, sf::Text placeText, sf::Text timeText, sf::Text nameText, sf::Font &font, vector<sf::Text> &outputVector) {
-    
+
     int yPlus = 30 * place;
 
     string place_ = to_string(place);
@@ -203,7 +198,6 @@ void drawLeaders(int width, int height, int place, float x, float y, string name
     outputVector.push_back(nameText);
 
 }
-
 
 void drawHappyFaceButton(float x, float y,sf::RenderWindow &window, bool &lost, bool &won) {
 
@@ -350,8 +344,10 @@ void drawCounter(int mine_, int height, int width, vector<tiles> tilesVector,sf:
 
         xPlus += 21;
     }
-}
 
+
+
+}
 
 void drawTimer(int mine_, int height, int width, vector<tiles> tilesVector,sf::Sprite &spriteZero, sf::Sprite &spriteOne, sf::Sprite &spriteTwo, sf::Sprite &spriteThree, sf::Sprite &spriteFour,
                  sf::Sprite &spriteFive, sf::Sprite &spriteSix, sf::Sprite &spriteSeven, sf::Sprite &spriteEight, sf::Sprite &spriteNine, sf::Sprite &spriteMinus, sf::RenderWindow &window, chrono::time_point<chrono::system_clock> &start,
@@ -1853,22 +1849,18 @@ int main()
                 }
             }
 
-
             //Game Over
             for (int k = 0; k < previousMines.size(); k++) {
-
-
+                
                 revealAllMines(boardVector, revealAllMinesVector, previousClicks, SecondWindow);
                 for (int k = 0; k < revealAllMinesVector.size(); k++) {
                     tilesVector.at(revealAllMinesVector.at(k)).drawBomb(SecondWindow);
                 }
 
-//                sf::RenderWindow LostWindow(sf::VideoMode(SecWidth, SecHeight), "Game Over");
-
                 if (!lost) {
                     end = chrono::system_clock::now();
                     elapsed_seconds = end - start;
-//
+
                     for ( int i = 0; i < timeVector.size(); i++) {
                         elapsed_seconds = elapsed_seconds - timeVector.at(i);
                     }
@@ -1878,15 +1870,7 @@ int main()
             }
 
             SecondWindow.display();
-
-
         }
-
-
-
-
     }
-
     return 0;
-
 }
